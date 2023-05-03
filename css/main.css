@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(39, 38, 38);
+    color: white;
+}
+
+input[type="text"]{
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 0.4rem 0.4rem;
+    width: 90%;
+}
+
+#cen{
+    width: 220px;
+}
+
+label{
+    font-size: 1.3rem;
+}
+
+input[type="submit"]{
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 0.3rem 1.5rem;
+    transition: all 300ms;
+}
+
+input[type="submit"]:hover{
+    transform: scale(1.08);
+    border-radius: 10px;
+}
+
+::placeholder{
+    color: black;
+    opacity: 0.7;
+}
+
+@media screen and (min-width: 576px){
+    input[type="text"]{
+        width: 70%;
+    }
+}
