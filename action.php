@@ -1,11 +1,21 @@
 <?php 
 
-    function isNotLetter($s, $p){
+    function isLetter($s, $p){
         $result = true;
 
         for($i = $p; $i < strlen($s) && $result; $i++)
-            if(ord($s) < 65 || ord($s) > 90)
+            if(ord($s[$i]) < 65 || ord($s[$i]) > 90)
                 $result = false;
+
+        return $result;
+    }
+
+    function isFirstLetter($s, $p){
+        $result = true;
+
+        if(ord($s[$p + 1]) < 65 || ord($s[$p + 1]) > 90)
+                $result = false;
+            
 
         return $result;
     }
@@ -23,7 +33,7 @@
                 }
             
             if(strlen($s) > strlen($cen) && $result)
-                if(!isNotLetter($s, strlen($cen) - 1))
+                if(isFirstLetter($s, strlen($cen) - 1))
                     $result = false;
         }
         else
@@ -36,7 +46,7 @@
         $final = "***";
         $copy = strtoupper($s);
 
-        if(isNotLetter($copy, 0)){
+        if(!isLetter($copy, 0)){
             $index = 0;
             while(ord($copy[$index]) >= 65 && ord($copy[$index]) <= 90 && $index < strlen($copy))
                 $index++;
