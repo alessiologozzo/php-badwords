@@ -49,10 +49,14 @@
     <title>PHP Badwords</title>
 </head>
 <body>
-    <div class="container px-2 pt-4 text-center">
+    <div class="container px-2 pt-5 text-center">
         <?php for($i = 0; $i < count($elements); $i++)
             echo $elements[$i] . " ";
         ?>
+
+        <div class="pt-5 mt-2">
+            <a href="./index.html" class="al-button">Torna alla home</a>
+        </div>
     </div>
 </body>
 </html>

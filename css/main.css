@@ -1,6 +1,8 @@
 body{
     background-color: rgb(39, 38, 38);
     color: white;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 input[type="text"]{
@@ -18,6 +20,8 @@ input[type="text"]{
 
 label{
     font-size: 1.3rem;
+    padding: 0.4rem;
+    cursor: pointer;
 }
 
 input[type="submit"]{
@@ -26,17 +30,32 @@ input[type="submit"]{
     border: 1px solid lightgray;
     border-radius: 4px;
     padding: 0.3rem 1.5rem;
-    transition: all 300ms;
+    transition: transform 300ms;
 }
 
 input[type="submit"]:hover{
-    transform: scale(1.08);
-    border-radius: 10px;
+    transform: scale(1.1);
 }
 
 ::placeholder{
     color: black;
     opacity: 0.7;
+}
+
+.al-button{
+    display: inline-block;
+    background-color: blueviolet;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    transition: transform 300ms;
+    text-decoration: none;
+}
+
+.al-button:hover{
+    transform: scale(1.1);
+    color: white;
 }
 
 @media screen and (min-width: 576px){
