@@ -1,16 +1,31 @@
 <?php 
 
+    function isNotLetter($s, $p){
+        $result = true;
+
+        for($i = $p; $i < strlen($s) && $result; $i++)
+            if(ord($s) < 65 || ord($s) > 90)
+                $result = false;
+
+        return $result;
+    }
+
     function needToCensor($s, $cen){
         $result = true;
 
         $s = strtoupper($s);
         $cen = strtoupper($cen);
 
-        if(strlen($s) == strlen($cen) || (strlen($s) == strlen($cen) + 1 && ($s[strlen($s) - 1] == '.' || $s[strlen($s) - 1] == ',' || $s[strlen($s) - 1] == ':' || $s[strlen($s) - 1] == ';' || $s[strlen($s) - 1] == '!' || $s[strlen($s) - 1] == '?')))
+        if(strlen($s) >= strlen($cen)){
             for($i = 0; $i < strlen($cen) && $result; $i++){
                 if($s[$i] != $cen[$i])
                     $result = false;
-            }
+                }
+            
+            if(strlen($s) > strlen($cen) && $result)
+                if(!isNotLetter($s, strlen($cen) - 1))
+                    $result = false;
+        }
         else
             $result = false;
 
@@ -18,19 +33,23 @@
     }
 
     function censor(&$s){
-        $c = "";
+        $final = "***";
+        $copy = strtoupper($s);
 
-        if($s[strlen($s) - 1] == ',' || $s[strlen($s) - 1] == '.' || $s[strlen($s) - 1] == ':' || $s[strlen($s) - 1] == ';' || $s[strlen($s) - 1] == '!' || $s[strlen($s) - 1] == '?')
-            $c = $s[strlen($s) - 1];
+        if(isNotLetter($copy, 0)){
+            $index = 0;
+            while(ord($copy[$index]) >= 65 && ord($copy[$index]) <= 90 && $index < strlen($copy))
+                $index++;
 
-        $s = "***";
-        if($c != "")
-            $s .= $c;
+            for($i = $index; $i < strlen($s); $i++)
+                $final .= $s[$i];
+        }
+
+        $s = $final;
     }
 
     $par = $_POST["par"];
     $cen = $_POST["cen"];
-    $prova;
     $elements = explode(" ", $par);
 
     for($i = 0; $i < count($elements); $i++)
