@@ -65,6 +65,8 @@
     for($i = 0; $i < count($elements); $i++)
         if(needToCensor($elements[$i], $cen))
             censor($elements[$i]);
+
+    $newPar = implode(" ", $elements);
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +81,11 @@
 </head>
 <body>
     <div class="container px-2 pt-5 text-center">
-        <?php for($i = 0; $i < count($elements); $i++)
-            echo $elements[$i] . " ";
-        ?>
+        <strong>Paragrafo originale (lunghezza = <?php echo strlen($par)?>): </strong>
+        <p><?php echo $par?></p>
+
+        <strong>Paragrafo censurato (lunghezza = <?php echo strlen($newPar)?>): </strong>
+        <p><?php echo $newPar?></p>
 
         <div class="pt-5 mt-2">
             <a href="./index.html" class="al-button">Torna alla home</a>
