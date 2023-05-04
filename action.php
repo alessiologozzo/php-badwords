@@ -81,10 +81,10 @@
 </head>
 <body>
     <div class="container px-2 pt-5 text-center">
-        <strong>Paragrafo originale (lunghezza = <?php echo strlen($par)?>): </strong>
+        <strong>Paragrafo originale (lunghezza = <?php echo strlen($par)?>)</strong>
         <p><?php echo $par?></p>
 
-        <strong>Paragrafo censurato (lunghezza = <?php echo strlen($newPar)?>): </strong>
+        <strong>Paragrafo censurato (lunghezza = <?php echo strlen($newPar)?>)</strong>
         <p><?php echo $newPar?></p>
 
         <div class="pt-5 mt-2">
